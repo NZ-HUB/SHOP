@@ -7,140 +7,114 @@
 <meta name="description" content="NZ HUB - Soporte 24/7 en Discord. Productos digitales para Discord y cuentas de streaming.">
 <meta name="keywords" content="Discord, Nitro, Boost, Netflix, Disney+, Prime Video, NZ HUB">
 
-<!-- SEO / Open Graph -->
-<meta property="og:title" content="NZ HUB | NZ on top">
-<meta property="og:description" content="Soporte 24/7 en Discord y productos digitales para Discord y cuentas de streaming.">
-<meta property="og:image" content="logo.webp">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://tusitio.com">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NZ HUB | NZ on top">
-<meta name="twitter:description" content="Soporte 24/7 en Discord y productos digitales.">
-<meta name="twitter:image" content="logo.webp">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --color-bg: #05070c;
-    --color-text: #cfe2ff;
-    --color-accent: #00bfff;
-    --color-neon: #00f0ff;
-    --color-overlay: rgba(0,0,0,0.85);
-    --particle-color: #00f0ff;
-    --transition-speed: 0.3s;
-  }
+:root {
+  --color-bg: #05070c;
+  --color-text: #cfe2ff;
+  --color-accent: #00bfff;
+  --color-neon: #00f0ff;
+  --color-overlay: rgba(0,0,0,0.85);
+  --particle-color: #00f0ff;
+  --transition-speed: 0.3s;
+}
 
-  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
-  body { color: var(--color-text); background-color: var(--color-bg); overflow-x:hidden; padding:20px 10px; min-height:100vh; position: relative; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { color: var(--color-text); background-color: var(--color-bg); overflow-x:hidden; padding:20px 10px; min-height:100vh; position: relative; }
 
-  /* BACKGROUND */
-  .bg-gif { position:fixed; inset:0; background:url('fondo.gif') center/cover no-repeat; z-index:-3; }
-  .bg-overlay { position:fixed; inset:0; background:var(--color-overlay); z-index:-2; }
+/* BACKGROUND */
+.bg-gif { position:fixed; inset:0; background:url('fondo.gif') center/cover no-repeat; z-index:-3; }
+.bg-overlay { position:fixed; inset:0; background:var(--color-overlay); z-index:-2; }
 
-  /* PARTICLES */
-  .particles { position:fixed; inset:0; pointer-events:none; z-index:-1; }
-  .particle {
-    position:absolute; width:3px; height:3px; background: var(--particle-color); border-radius:50%;
-    opacity:0.7; animation: float linear infinite; will-change: transform;
-  }
-  @keyframes float {
-    0% { transform: translateY(100vh) translateX(0); }
-    50% { transform: translateY(50vh) translateX(10px); }
-    100% { transform: translateY(-10vh) translateX(-10px); }
-  }
+/* PARTICLES */
+.particles { position:fixed; inset:0; pointer-events:none; z-index:-1; }
+.particle { position:absolute; width:3px; height:3px; background: var(--particle-color); border-radius:50%; opacity:0.7; animation: float linear infinite; will-change: transform; }
+@keyframes float { 0% { transform: translateY(100vh) translateX(0); } 50% { transform: translateY(50vh) translateX(10px); } 100% { transform: translateY(-10vh) translateX(-10px); } }
 
-  /* HEADER */
-  header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:40px; }
-  .logo { display:flex; align-items:center; gap:10px; font-size:1.5em; font-weight:700; color:var(--color-accent); }
-  .logo img { height:40px; }
-  .buttons { display:flex; gap:10px; }
+/* HEADER */
+header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:40px; }
+.logo { display:flex; align-items:center; gap:10px; font-size:1.5em; font-weight:700; color:var(--color-accent); }
+.logo img { height:40px; }
+.buttons { display:flex; gap:10px; }
 
-  /* BOTONES */
-  .buttons button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: transparent;
-    border: 2px solid var(--color-accent);
-    color: var(--color-text);
-    padding: 10px 18px;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0 0 10px var(--color-accent);
-    transition: all var(--transition-speed);
-  }
-  .buttons button:hover, .buttons button:focus { background:var(--color-accent); color:var(--color-bg); outline:none; }
-  .buttons button img.btn-icon { width: 20px; height: 20px; }
+/* BOTONES */
+.buttons button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid var(--color-accent);
+  color: var(--color-text);
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--color-accent);
+  transition: all var(--transition-speed);
+}
+.buttons button:hover, .buttons button:focus { background:var(--color-accent); color:var(--color-bg); outline:none; }
+.buttons button img.btn-icon { width: 20px; height: 20px; }
 
-  /* HERO */
-  .hero { text-align:center; margin-bottom:40px; }
-  .hero-title {
-    font-size:clamp(3rem,8vw,5rem); color:var(--color-neon);
-    text-shadow: 0 0 5px var(--color-neon),0 0 10px var(--color-neon),0 0 20px var(--color-accent),0 0 30px #0099ff,0 0 40px var(--color-neon);
-    letter-spacing:2px; animation: neonGlow 2s infinite alternate;
-  }
-  @keyframes neonGlow {
-    0%,100% { text-shadow:0 0 5px var(--color-neon),0 0 20px var(--color-accent); }
-    50% { text-shadow:0 0 15px var(--color-neon),0 0 30px var(--color-accent); }
-  }
-  .hero-text { max-width:600px; margin:auto; text-decoration:underline; text-decoration-color:var(--color-neon); text-underline-offset:6px; font-size:1.1em; }
-  .hero-info { max-width:600px; margin:10px auto 0; font-size:1em; color:var(--color-accent); }
+/* HERO */
+.hero { text-align:center; margin-bottom:40px; }
+.hero-title { font-size:clamp(3rem,8vw,5rem); color:var(--color-neon);
+  text-shadow: 0 0 5px var(--color-neon),0 0 10px var(--color-neon),0 0 20px var(--color-accent),0 0 30px #0099ff,0 0 40px var(--color-neon);
+  letter-spacing:2px; animation: neonGlow 2s infinite alternate;
+}
+@keyframes neonGlow { 0%,100% { text-shadow:0 0 5px var(--color-neon),0 0 20px var(--color-accent); } 50% { text-shadow:0 0 15px var(--color-neon),0 0 30px var(--color-accent); } }
+.hero-text { max-width:600px; margin:auto; text-decoration:underline; text-decoration-color:var(--color-neon); text-underline-offset:6px; font-size:1.1em; }
+.hero-info { max-width:600px; margin:10px auto 0; font-size:1em; color:var(--color-accent); }
 
-  /* SECTIONS */
-  h2.section-title { text-align:center; margin:40px 0 10px; color:var(--color-neon); text-shadow:0 0 15px var(--color-accent); }
+/* SECTIONS */
+h2.section-title { text-align:center; margin:40px 0 10px; color:var(--color-neon); text-shadow:0 0 15px var(--color-accent); }
 
-  /* CAROUSEL */
-  .carousel-container { max-width:1200px; margin:20px auto 50px; display:flex; align-items:center; gap:10px; }
-  .carousel { display:flex; gap:25px; overflow-x:auto; scroll-behavior:smooth; padding:20px; scrollbar-width:none; }
-  .carousel::-webkit-scrollbar { display:none; }
+/* CAROUSEL */
+.carousel-container { max-width:1200px; margin:20px auto 50px; display:flex; align-items:center; gap:10px; }
+.carousel { display:flex; gap:25px; overflow-x:auto; scroll-behavior:smooth; padding:20px; scrollbar-width:none; }
+.carousel::-webkit-scrollbar { display:none; }
 
-  .product {
-    min-width:220px; background:rgba(0,0,50,0.7); border-radius:15px; padding:20px; text-align:center;
-    border:2px solid rgba(0,115,255,0.5);
-    box-shadow:0 5px 15px rgba(0,180,255,0.3);
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed), opacity 0.5s, transform 0.5s;
-    opacity:0; transform:translateY(20px); will-change: transform, box-shadow;
-  }
-  .product.visible { opacity:1; transform:translateY(0); }
-  .product:hover { transform:scale(1.05); box-shadow: 0 0 15px var(--color-neon); }
-  .product img { width:100%; border-radius:12px; margin-bottom:10px; object-fit:cover; }
-  .product h3 { color:var(--color-neon); }
+.product {
+  min-width:220px; background:rgba(0,0,50,0.7); border-radius:15px; padding:20px; text-align:center;
+  border:2px solid rgba(0,115,255,0.5);
+  box-shadow:0 5px 15px rgba(0,180,255,0.3);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed), opacity 0.5s, transform 0.5s;
+  opacity:0; transform:translateY(20px); will-change: transform, box-shadow;
+}
+.product.visible { opacity:1; transform:translateY(0); }
+.product:hover { transform:scale(1.05); box-shadow: 0 0 15px var(--color-neon); }
+.product img { width:100%; border-radius:12px; margin-bottom:10px; object-fit:cover; }
+.product h3 { color:var(--color-neon); }
 
-  .arrow { background:transparent; border:2px solid var(--color-accent); color:var(--color-neon);
-    font-size:2em; padding:10px 15px; border-radius:50%; cursor:pointer; box-shadow:0 0 10px var(--color-accent);
-    transition:all var(--transition-speed);
-  }
-  .arrow:hover, .arrow:focus { background:var(--color-accent); color:var(--color-bg); outline:none; }
+/* FLECHAS SOLO FLECHA, SIN NINGÚN BOTÓN */
+.arrow {
+  background: transparent;   /* sin fondo */
+  border: none;              /* sin borde */
+  color: var(--color-neon);  /* color de la flecha */
+  font-size: 2.5em;          /* tamaño grande */
+  cursor: pointer; 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s;    /* solo cambia color al hover */
+}
+.arrow:hover, .arrow:focus { 
+  color: var(--color-accent);  /* cambio de color de la flecha únicamente */
+  outline: none; 
+}
 
-  /* FOOTER */
-  footer { text-align:center; margin-top:40px; font-size:0.8em; color:#99ccff; }
+/* FOOTER */
+footer { text-align:center; margin-top:40px; font-size:0.8em; color:#99ccff; }
 
-  /* MODALES */
-  .modal { display:none; position:fixed; inset:0; background:rgba(0,0,30,0.85); z-index:100; }
-  .modal-content { 
-    background:#0a0d17; 
-    margin:60px auto; 
-    padding:30px; 
-    border-radius:15px; 
-    border:2px solid var(--color-accent); 
-    max-width:600px; 
-    max-height:80vh; /* Limita altura */
-    overflow-y:auto;   /* Scroll vertical si es necesario */
-    color:var(--color-text); 
-    text-align:left; 
-    position: relative; 
-  }
-  .modal-content h2 { color:var(--color-neon); text-shadow:0 0 10px var(--color-accent),0 0 20px var(--color-neon); text-align:center; margin-bottom:20px; }
-  .modal-content h3 { color:#00bfff; margin-top:15px; margin-bottom:8px; }
-  .close { position:absolute; top:15px; right:20px; cursor:pointer; font-size:1.5em; color:var(--color-neon); }
+/* MODALES */
+.modal { display:none; position:fixed; inset:0; background:rgba(0,0,30,0.85); z-index:100; }
+.modal-content { background:#0a0d17; margin:60px auto; padding:30px; border-radius:15px; border:2px solid var(--color-accent); max-width:600px; max-height:80vh; overflow-y:auto; color:var(--color-text); text-align:left; position: relative; }
+.modal-content h2 { color:var(--color-neon); text-shadow:0 0 10px var(--color-accent),0 0 20px var(--color-neon); text-align:center; margin-bottom:20px; }
+.modal-content h3 { color:#00bfff; margin-top:15px; margin-bottom:8px; }
+.close { position:absolute; top:15px; right:20px; cursor:pointer; font-size:1.5em; color:var(--color-neon); }
+.modal-content ul { margin-left:20px; margin-bottom:10px; }
+.modal-content p { margin-bottom:10px; }
 
-  .modal-content ul { margin-left:20px; margin-bottom:10px; }
-  .modal-content p { margin-bottom:10px; }
-
-  /* RESPONSIVE */
-  @media (max-width: 600px) { .product{min-width:160px;} .hero-title{font-size:3rem;} }
+@media (max-width: 600px) { .product{min-width:160px;} .hero-title{font-size:3rem;} }
 </style>
 </head>
 <body>
@@ -153,8 +127,7 @@
   <div class="logo"><img src="logo.webp" alt="NZ HUB Logo"></div>
   <div class="buttons">
     <button id="discordBtn" aria-label="Open Discord Modal">
-      <img src="discord.webp" alt="Discord" class="btn-icon">
-      Discord
+      <img src="discord.webp" alt="Discord" class="btn-icon"> Discord
     </button>
     <button id="termsBtn" aria-label="Open Terms Modal">Terms & Conditions</button>
   </div>
@@ -278,28 +251,16 @@
     particlesContainer.appendChild(p);
   }
 
-  // CAROUSEL BIDIRECCIONAL
+  // CAROUSEL FUNCIONAL
   function initCarousel(carouselId, prevId, nextId){
     const carousel=document.getElementById(carouselId);
     const prev=document.getElementById(prevId);
     const next=document.getElementById(nextId);
-    let speed=0.5;
-    let direction=1; // 1 derecha, -1 izquierda
 
-    prev.onclick=()=>{ carousel.scrollBy({left:-260,behavior:'smooth'}); direction=-1; };
-    next.onclick=()=>{ carousel.scrollBy({left:260,behavior:'smooth'}); direction=1; };
-
-    carousel.addEventListener('mouseenter',()=>speed=0);
-    carousel.addEventListener('mouseleave',()=>speed=0.5);
-
-    function autoScroll(){
-      carousel.scrollLeft+=speed*direction;
-      if(carousel.scrollLeft>=carousel.scrollWidth-carousel.clientWidth) direction=-1;
-      if(carousel.scrollLeft<=0) direction=1;
-      requestAnimationFrame(autoScroll);
-    }
-    autoScroll();
+    prev.onclick = () => carousel.scrollBy({ left: -260, behavior: 'smooth' });
+    next.onclick = () => carousel.scrollBy({ left: 260, behavior: 'smooth' });
   }
+
   initCarousel('carousel','prev','next');
   initCarousel('carousel2','prev2','next2');
 
@@ -315,6 +276,7 @@
     close.addEventListener('click',()=>modal.style.display='none');
     window.addEventListener('click',e=>{ if(e.target===modal) modal.style.display='none'; });
   }
+
   initModal('discordBtn','discordModal','closeDiscord');
   initModal('termsBtn','termsModal','closeTerms');
 </script>
