@@ -1,297 +1,323 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>NZ HUB | NZ on top</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>NZ HUB | NZ on top</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NZ HUB - Soporte 24/7 en Discord. Productos digitales para Discord y cuentas de streaming.">
+<meta name="keywords" content="Discord, Nitro, Boost, Netflix, Disney+, Prime Video, NZ HUB">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<!-- SEO / Open Graph -->
+<meta property="og:title" content="NZ HUB | NZ on top">
+<meta property="og:description" content="Soporte 24/7 en Discord y productos digitales para Discord y cuentas de streaming.">
+<meta property="og:image" content="logo.webp">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tusitio.com">
 
-  <style>
-    :root {
-      --color-bg: #05070c;
-      --color-text: #cfe2ff;
-      --color-accent: #00bfff;
-      --color-neon: #00f0ff;
-      --color-overlay: rgba(0,0,0,0.85);
-      --particle-color: #00f0ff;
-    }
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NZ HUB | NZ on top">
+<meta name="twitter:description" content="Soporte 24/7 en Discord y productos digitales.">
+<meta name="twitter:image" content="logo.webp">
 
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-    body {
-      color: var(--color-text);
-      min-height:100vh;
-      padding:20px 10px;
-      background-color: var(--color-bg);
-      overflow-x:hidden;
-      position:relative;
-    }
+<style>
+  :root {
+    --color-bg: #05070c;
+    --color-text: #cfe2ff;
+    --color-accent: #00bfff;
+    --color-neon: #00f0ff;
+    --color-overlay: rgba(0,0,0,0.85);
+    --particle-color: #00f0ff;
+    --transition-speed: 0.3s;
+  }
 
-    /* Fondo GIF y overlay */
-    .bg-gif { position:fixed; inset:0; background:url('fondo.gif') center/cover no-repeat; z-index:-3; }
-    .bg-overlay { position:fixed; inset:0; background:var(--color-overlay); z-index:-2; }
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  body { color: var(--color-text); background-color: var(--color-bg); overflow-x:hidden; padding:20px 10px; min-height:100vh; position: relative; }
 
-    /* Partículas */
-    .particles { position:fixed; inset:0; pointer-events:none; z-index:-1; }
-    .particle {
-      position:absolute;
-      width:3px; height:3px;
-      background: var(--particle-color);
-      border-radius:50%;
-      opacity:0.7;
-      animation:float linear infinite;
-    }
-    @keyframes float {
-      from { transform:translateY(100vh); }
-      to { transform:translateY(-10vh); }
-    }
+  /* BACKGROUND */
+  .bg-gif { position:fixed; inset:0; background:url('fondo.gif') center/cover no-repeat; z-index:-3; }
+  .bg-overlay { position:fixed; inset:0; background:var(--color-overlay); z-index:-2; }
 
-    /* Header */
-    header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-      margin-bottom:40px;
-      gap:10px;
-    }
-    .logo { display:flex; align-items:center; gap:10px; font-size:1.5em; font-weight:700; color:var(--color-accent); }
-    .logo img { height:40px; }
-    .buttons { display:flex; gap:10px; flex-wrap:wrap; }
-    .buttons button {
-      background:transparent;
-      border:2px solid var(--color-accent);
-      color:var(--color-text);
-      padding:10px 18px;
-      border-radius:25px;
-      cursor:pointer;
-      box-shadow:0 0 10px var(--color-accent);
-      transition:0.3s;
-    }
-    .buttons button:hover, .buttons button:focus {
-      background:var(--color-accent);
-      color: var(--color-bg);
-      outline:none;
-    }
+  /* PARTICLES */
+  .particles { position:fixed; inset:0; pointer-events:none; z-index:-1; }
+  .particle {
+    position:absolute; width:3px; height:3px; background: var(--particle-color); border-radius:50%;
+    opacity:0.7; animation: float linear infinite; will-change: transform;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) translateX(0); }
+    50% { transform: translateY(50vh) translateX(10px); }
+    100% { transform: translateY(-10vh) translateX(-10px); }
+  }
 
-    /* Hero */
-    .hero { text-align:center; margin-bottom:30px; }
-    .hero h1 { font-size:3em; color:var(--color-neon); text-shadow:0 0 30px var(--color-accent); }
-    .hero p { max-width:600px; margin:auto; }
+  /* HEADER */
+  header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:40px; }
+  .logo { display:flex; align-items:center; gap:10px; font-size:1.5em; font-weight:700; color:var(--color-accent); }
+  .logo img { height:40px; }
+  .buttons { display:flex; gap:10px; }
 
-    /* Carrusel */
-    .carousel-container { max-width:1200px; margin:auto; display:flex; align-items:center; position:relative; }
-    .carousel {
-      display:flex;
-      gap:25px;
-      overflow-x:hidden;
-      scroll-behavior:smooth;
-      padding:20px;
-    }
-    .product {
-      min-width:220px;
-      background:rgba(0,0,50,0.7);
-      border-radius:15px;
-      padding:20px;
-      text-align:center;
-      border:2px solid rgba(0,180,255,0.5);
-      box-shadow:0 5px 20px rgba(0,180,255,0.3);
-      cursor:pointer;
-      transition:0.4s;
-    }
-    .product:hover { transform:scale(1.08); box-shadow:0 0 40px var(--color-neon); }
-    .product img { width:100%; border-radius:12px; margin-bottom:10px; }
-    .product h3 { color:var(--color-neon); }
-    .buy-btn {
-      display:inline-block;
-      margin-top:8px;
-      padding:6px 14px;
-      border:1px solid var(--color-accent);
-      border-radius:20px;
-      color:#99ccff;
-      text-decoration:none;
-      transition:0.3s;
-    }
-    .buy-btn:hover { background:var(--color-accent); color:var(--color-bg); }
+  /* BOTONES */
+  .buttons button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 2px solid var(--color-accent);
+    color: var(--color-text);
+    padding: 10px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--color-accent);
+    transition: all var(--transition-speed);
+  }
+  .buttons button:hover, .buttons button:focus { background:var(--color-accent); color:var(--color-bg); outline:none; }
+  .buttons button img.btn-icon { width: 20px; height: 20px; }
 
-    .arrow {
-      background:transparent;
-      border:2px solid var(--color-accent);
-      color:var(--color-neon);
-      font-size:2em;
-      padding:10px 15px;
-      border-radius:50%;
-      cursor:pointer;
-      box-shadow:0 0 15px var(--color-accent);
-      transition:0.3s;
-    }
-    .arrow:hover, .arrow:focus { background:var(--color-accent); color:var(--color-bg); outline:none; }
+  /* HERO */
+  .hero { text-align:center; margin-bottom:40px; }
+  .hero-title {
+    font-size:clamp(3rem,8vw,5rem); color:var(--color-neon);
+    text-shadow: 0 0 5px var(--color-neon),0 0 10px var(--color-neon),0 0 20px var(--color-accent),0 0 30px #0099ff,0 0 40px var(--color-neon);
+    letter-spacing:2px; animation: neonGlow 2s infinite alternate;
+  }
+  @keyframes neonGlow {
+    0%,100% { text-shadow:0 0 5px var(--color-neon),0 0 20px var(--color-accent); }
+    50% { text-shadow:0 0 15px var(--color-neon),0 0 30px var(--color-accent); }
+  }
+  .hero-text { max-width:600px; margin:auto; text-decoration:underline; text-decoration-color:var(--color-neon); text-underline-offset:6px; font-size:1.1em; }
+  .hero-info { max-width:600px; margin:10px auto 0; font-size:1em; color:var(--color-accent); }
 
-    /* Footer */
-    footer { text-align:center; margin-top:40px; font-size:0.8em; color:#99ccff; }
-    footer a { color:var(--color-neon); text-decoration:none; }
+  /* SECTIONS */
+  h2.section-title { text-align:center; margin:40px 0 10px; color:var(--color-neon); text-shadow:0 0 15px var(--color-accent); }
 
-    /* Modales */
-    .modal { display:none; position:fixed; inset:0; background:rgba(0,0,30,0.85); z-index:100; }
-    .modal-content {
-      background:#0a0d17;
-      margin:60px auto;
-      padding:30px;
-      border-radius:15px;
-      border:2px solid var(--color-accent);
-      max-width:600px;
-      color:var(--color-text);
-      text-align:center;
-    }
-    .close { float:right; cursor:pointer; font-size:1.5em; color:var(--color-neon); }
-    .modal-content h2 { color:var(--color-neon); text-shadow:0 0 10px var(--color-accent),0 0 20px var(--color-neon); }
-    .terms-content { text-align:left; }
-  </style>
+  /* CAROUSEL */
+  .carousel-container { max-width:1200px; margin:20px auto 50px; display:flex; align-items:center; gap:10px; }
+  .carousel { display:flex; gap:25px; overflow-x:auto; scroll-behavior:smooth; padding:20px; scrollbar-width:none; }
+  .carousel::-webkit-scrollbar { display:none; }
+
+  .product {
+    min-width:220px; background:rgba(0,0,50,0.7); border-radius:15px; padding:20px; text-align:center;
+    border:2px solid rgba(0,115,255,0.5);
+    box-shadow:0 5px 15px rgba(0,180,255,0.3);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), opacity 0.5s, transform 0.5s;
+    opacity:0; transform:translateY(20px); will-change: transform, box-shadow;
+  }
+  .product.visible { opacity:1; transform:translateY(0); }
+  .product:hover { transform:scale(1.05); box-shadow: 0 0 15px var(--color-neon); }
+  .product img { width:100%; border-radius:12px; margin-bottom:10px; object-fit:cover; }
+  .product h3 { color:var(--color-neon); }
+
+  .arrow { background:transparent; border:2px solid var(--color-accent); color:var(--color-neon);
+    font-size:2em; padding:10px 15px; border-radius:50%; cursor:pointer; box-shadow:0 0 10px var(--color-accent);
+    transition:all var(--transition-speed);
+  }
+  .arrow:hover, .arrow:focus { background:var(--color-accent); color:var(--color-bg); outline:none; }
+
+  /* FOOTER */
+  footer { text-align:center; margin-top:40px; font-size:0.8em; color:#99ccff; }
+
+  /* MODALES */
+  .modal { display:none; position:fixed; inset:0; background:rgba(0,0,30,0.85); z-index:100; }
+  .modal-content { 
+    background:#0a0d17; 
+    margin:60px auto; 
+    padding:30px; 
+    border-radius:15px; 
+    border:2px solid var(--color-accent); 
+    max-width:600px; 
+    max-height:80vh; /* Limita altura */
+    overflow-y:auto;   /* Scroll vertical si es necesario */
+    color:var(--color-text); 
+    text-align:left; 
+    position: relative; 
+  }
+  .modal-content h2 { color:var(--color-neon); text-shadow:0 0 10px var(--color-accent),0 0 20px var(--color-neon); text-align:center; margin-bottom:20px; }
+  .modal-content h3 { color:#00bfff; margin-top:15px; margin-bottom:8px; }
+  .close { position:absolute; top:15px; right:20px; cursor:pointer; font-size:1.5em; color:var(--color-neon); }
+
+  .modal-content ul { margin-left:20px; margin-bottom:10px; }
+  .modal-content p { margin-bottom:10px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) { .product{min-width:160px;} .hero-title{font-size:3rem;} }
+</style>
 </head>
 <body>
 
-  <div class="bg-gif"></div>
-  <div class="bg-overlay"></div>
-  <div class="particles" id="particles"></div>
+<div class="bg-gif"></div>
+<div class="bg-overlay"></div>
+<div class="particles" id="particles"></div>
 
-  <header>
-    <div class="logo"><img src="logo.webp" alt="NZ HUB Logo">NZ HUB</div>
-    <div class="buttons">
-      <button id="discordBtn">Discord</button>
-      <button id="termsBtn">Terms & Conditions</button>
-    </div>
-  </header>
+<header>
+  <div class="logo"><img src="logo.webp" alt="NZ HUB Logo"></div>
+  <div class="buttons">
+    <button id="discordBtn" aria-label="Open Discord Modal">
+      <img src="discord.webp" alt="Discord" class="btn-icon">
+      Discord
+    </button>
+    <button id="termsBtn" aria-label="Open Terms Modal">Terms</button>
+  </div>
+</header>
 
-  <main>
-    <section class="hero">
-      <h1>NZ HUB</h1>
-      <p>Support 24/7 in our Discord. 100% legit and fast</p>
-    </section>
+<main>
+  <section class="hero">
+    <h1 class="hero-title">NZ HUB</h1>
+    <p class="hero-text" aria-live="polite">Support 24/7 in our Discord. 100% legit and fast</p>
+    <p class="hero-info" aria-live="polite">⚠️ All purchases must be made through Discord</p>
+  </section>
 
-    <section class="products">
-      <div class="carousel-container">
-        <button class="arrow" id="prev">&#10094;</button>
-        <div class="carousel" id="carousel">
-          <div class="product" data-modal="modal-nitro">
-            <img src="Discord-nitro.jpg" alt="N1TR0 Boost">
-            <h3>N1TR0 B00ST</h3>
-            <a href="https://discord.gg/RCTWSyqguQ" target="_blank" class="buy-btn">BUY</a>
-          </div>
-          <div class="product" data-modal="modal-server">
-            <img src="p1_3353863_fc337ffe.webp" alt="Server Boost">
-            <h3>SERVER B00ST</h3>
-            <a href="https://discord.gg/RCTWSyqguQ" target="_blank" class="buy-btn">BUY</a>
-          </div>
-          <div class="product" data-modal="modal-decos">
-            <img src="decos.png" alt="Decorations">
-            <h3>DECORATIONS</h3>
-            <a href="https://discord.gg/RCTWSyqguQ" target="_blank" class="buy-btn">BUY</a>
-          </div>
-          <div class="product" data-modal="modal-effects">
-            <img src="image1.png" alt="Effects">
-            <h3>EFFECTS</h3>
-            <a href="https://discord.gg/RCTWSyqguQ" target="_blank" class="buy-btn">BUY</a>
-          </div>
-          <div class="product" data-modal="modal-nameplates">
-            <img src="Nameplate_in_Discord_600x.webp" alt="Nameplates">
-            <h3>NAMEPLATES</h3>
-            <a href="https://discord.gg/RCTWSyqguQ" target="_blank" class="buy-btn">BUY</a>
-          </div>
-        </div>
-        <button class="arrow" id="next">&#10095;</button>
+  <section>
+    <h2 class="section-title">DISCORD</h2>
+    <div class="carousel-container">
+      <button class="arrow" id="prev" aria-label="Previous product">&#10094;</button>
+      <div class="carousel" id="carousel">
+        <article class="product"><img src="Discord-nitro.jpg" alt="N1TR0 B00ST" loading="lazy"><h3>N1TR0 B00ST</h3></article>
+        <article class="product"><img src="p1_3353863_fc337ffe.webp" alt="SERVER B00ST" loading="lazy"><h3>SERVER B00ST</h3></article>
+        <article class="product"><img src="decos.png" alt="DECORATIONS" loading="lazy"><h3>DECORATIONS</h3></article>
+        <article class="product"><img src="image1.png" alt="EFFECTS" loading="lazy"><h3>EFFECTS</h3></article>
+        <article class="product"><img src="Nameplate_in_Discord_600x.webp" alt="NAMEPLATES" loading="lazy"><h3>NAMEPLATES</h3></article>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2026 NZ HUB. All rights reserved. <br>
-    <a href="https://discord.gg/RCTWSyqguQ" target="_blank">Join our Discord</a>
-  </footer>
-
-  <!-- Modales -->
-  <div id="modal-nitro" class="modal"><div class="modal-content"><span class="close">&times;</span><h2>N1TR0 B00ST</h2></div></div>
-  <div id="modal-server" class="modal"><div class="modal-content"><span class="close">&times;</span><h2>SERVER B00ST</h2></div></div>
-  <div id="modal-decos" class="modal"><div class="modal-content"><span class="close">&times;</span><h2>DECORATIONS</h2></div></div>
-  <div id="modal-effects" class="modal"><div class="modal-content"><span class="close">&times;</span><h2>EFFECTS</h2></div></div>
-  <div id="modal-nameplates" class="modal"><div class="modal-content"><span class="close">&times;</span><h2>NAMEPLATES</h2></div></div>
-
-  <div id="discordModal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeDiscord">&times;</span>
-      <h2>Discord</h2>
-      <p>Join our Discord server and don't miss any news!</p>
-      <p><a href="https://discord.gg/RCTWSyqguQ" target="_blank">https://discord.gg/RCTWSyqguQ</a></p>
+      <button class="arrow" id="next" aria-label="Next product">&#10095;</button>
     </div>
-  </div>
+  </section>
 
-  <div id="termsModal" class="modal">
-    <div class="modal-content terms-content">
-      <span class="close" id="closeTerms">&times;</span>
-      <h2>Terms & Conditions</h2>
-      <p>This is an unofficial store that operates solely within Discord. We sell digital products for FiveM.</p>
-      <h3>Products</h3>
-      <ul>
-        <li>👕 FiveM Clothing</li>
-        <li>🚀 N1tr0 boosts / Server boosts</li>
-        <li>🏷️ Nameplates</li>
-        <li>🏠 Decorations and extras</li>
-        <li>All products are digital.</li>
-      </ul>
-      <h3>Payments</h3>
-      <ul>
-        <li>Payments via PayPal only.</li>
-        <li>Refunds only in case of our error.</li>
-      </ul>
-      <h3>Delivery</h3>
-      <ul><li>Usually immediate, max 24h.</li></ul>
-      <h3>Returns</h3>
-      <ul><li>No returns after delivery; issues reviewed case-by-case.</li></ul>
-      <h3>Modifications</h3>
-      <ul><li>We reserve the right to modify products, prices, or rules.</li></ul>
-      <h3>Support</h3>
-      <ul><li>Contact us via <a href="https://discord.com/channels/1464216501773930506/1464321724404465939" target="_blank">Discord</a>.</li></ul>
+  <section>
+    <h2 class="section-title">ACCOUNTS</h2>
+    <div class="carousel-container">
+      <button class="arrow" id="prev2" aria-label="Previous account">&#10094;</button>
+      <div class="carousel" id="carousel2">
+        <article class="product"><img src="disney.jpg" alt="DISNEY+" loading="lazy"><h3>DISNEY+</h3></article>
+        <article class="product"><img src="netflix.jpg" alt="NETFLIX" loading="lazy"><h3>NETFLIX</h3></article>
+        <article class="product"><img src="prime.jpg" alt="PRIME VIDEO" loading="lazy"><h3>PRIME VIDEO</h3></article>
+        <article class="product"><img src="dazn5171.jpg" alt="DAZN" loading="lazy"><h3>DAZN</h3></article>
+        <article class="product"><img src="hbo.jpg" alt="HBO MAX" loading="lazy"><h3>HBO MAX</h3></article>
+        <article class="product"><img src="crunchy.jpg" alt="CRUNCHYROLL" loading="lazy"><h3>CRUNCHYROLL</h3></article>
+      </div>
+      <button class="arrow" id="next2" aria-label="Next account">&#10095;</button>
     </div>
-  </div>
+  </section>
+</main>
 
-  <script>
-    // Partículas
-    const particlesContainer = document.getElementById('particles');
-    for(let i=0;i<40;i++){
-      const p = document.createElement('div');
-      p.className='particle';
-      p.style.left=`${Math.random()*100}vw`;
-      p.style.animationDuration=`${5+Math.random()*8}s`;
-      p.style.width=p.style.height=`${2+Math.random()*3}px`;
-      particlesContainer.appendChild(p);
+<footer>© 2026 NZ HUB. All rights reserved.</footer>
+
+<!-- MODALES -->
+<div id="discordModal" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <span class="close" id="closeDiscord">&times;</span>
+    <h2>Discord</h2>
+    <p>Join our Discord server and don't miss any news!</p>
+    <p><a href="https://discord.gg/RCTWSyqguQ" target="_blank" rel="noopener noreferrer">https://discord.gg/RCTWSyqguQ</a></p>
+  </div>
+</div>
+
+<div id="termsModal" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-content terms-content">
+    <span class="close" id="closeTerms">&times;</span>
+    <h2>Terms & Conditions</h2>
+    <p>Welcome to NZ HUB! By using our services, you agree to the following terms. Please read them carefully.</p>
+
+    <h3>⚡ Our Store</h3>
+    <ul>
+      <li>This is an unofficial digital store operating exclusively through Discord.</li>
+      <li>We sell products such as Discord boosts, digital assets, and streaming accounts.</li>
+      <li>All purchases must be made through our Discord server.</li>
+    </ul>
+
+    <h3>💰 Payments & Refunds</h3>
+    <ul>
+      <li>Payments are accepted only via PayPal.</li>
+      <li>Refunds are only possible if we make an error in your order.</li>
+      <li>Please double-check the product before confirming your purchase.</li>
+    </ul>
+
+    <h3>🚀 Delivery</h3>
+    <ul>
+      <li>Delivery is usually immediate upon payment confirmation.</li>
+      <li>Maximum delivery time is 24 hours.</li>
+      <li>If any issues occur, contact our support on Discord.</li>
+    </ul>
+
+    <h3>🔄 Returns & Exchanges</h3>
+    <ul>
+      <li>Products cannot be returned after delivery.</li>
+      <li>Any issues will be reviewed individually and fairly.</li>
+      <li>We aim to resolve problems quickly and efficiently.</li>
+    </ul>
+
+    <h3>🛠️ Modifications</h3>
+    <ul>
+      <li>We reserve the right to modify products, prices, or rules at any time.</li>
+      <li>All updates will be communicated on Discord.</li>
+    </ul>
+
+    <h3>📞 Support</h3>
+    <ul>
+      <li>For any questions or assistance, contact us via <a href="https://discord.com/channels/1464216501773930506/1464321724404465939" target="_blank" rel="noopener noreferrer">Discord</a>.</li>
+      <li>Support is available 24/7.</li>
+    </ul>
+
+    <p style="margin-top:20px; font-style:italic; color:#00bfff;">
+      Thank you for choosing NZ HUB! Enjoy our digital products responsibly.
+    </p>
+  </div>
+</div>
+
+<script>
+  // PARTICLES
+  const particlesContainer=document.getElementById('particles');
+  const particleCount=window.innerWidth<600?20:40;
+  for(let i=0;i<particleCount;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const size=2+Math.random()*3;
+    p.style.width=p.style.height=`${size}px`;
+    p.style.left=`${Math.random()*100}vw`;
+    p.style.animationDuration=`${5+Math.random()*8}s`;
+    p.style.opacity=Math.random()*0.8+0.2;
+    particlesContainer.appendChild(p);
+  }
+
+  // CAROUSEL BIDIRECCIONAL
+  function initCarousel(carouselId, prevId, nextId){
+    const carousel=document.getElementById(carouselId);
+    const prev=document.getElementById(prevId);
+    const next=document.getElementById(nextId);
+    let speed=0.5;
+    let direction=1; // 1 derecha, -1 izquierda
+
+    prev.onclick=()=>{ carousel.scrollBy({left:-260,behavior:'smooth'}); direction=-1; };
+    next.onclick=()=>{ carousel.scrollBy({left:260,behavior:'smooth'}); direction=1; };
+
+    carousel.addEventListener('mouseenter',()=>speed=0);
+    carousel.addEventListener('mouseleave',()=>speed=0.5);
+
+    function autoScroll(){
+      carousel.scrollLeft+=speed*direction;
+      if(carousel.scrollLeft>=carousel.scrollWidth-carousel.clientWidth) direction=-1;
+      if(carousel.scrollLeft<=0) direction=1;
+      requestAnimationFrame(autoScroll);
     }
+    autoScroll();
+  }
+  initCarousel('carousel','prev','next');
+  initCarousel('carousel2','prev2','next2');
 
-    // Carrusel
-    const carousel = document.getElementById('carousel');
-    document.getElementById('next').addEventListener('click', ()=>carousel.scrollBy({left:260,behavior:'smooth'}));
-    document.getElementById('prev').addEventListener('click', ()=>carousel.scrollBy({left:-260,behavior:'smooth'}));
+  // PRODUCT FADE-IN
+  document.querySelectorAll('.product').forEach((el,i)=>{ setTimeout(()=>el.classList.add('visible'),i*100); });
 
-    // Abrir modales de productos
-    document.querySelectorAll('.product').forEach(p=>{
-      p.addEventListener('click', e=>{
-        if(e.target.classList.contains('buy-btn')) return;
-        document.getElementById(p.dataset.modal).style.display='block';
-      });
-    });
-
-    // Abrir modales Discord y Terms
-    document.getElementById('discordBtn').addEventListener('click',()=>document.getElementById('discordModal').style.display='block');
-    document.getElementById('termsBtn').addEventListener('click',()=>document.getElementById('termsModal').style.display='block');
-
-    // Cerrar modales
-    document.querySelectorAll('.modal .close').forEach(c=>{
-      c.addEventListener('click',()=>c.closest('.modal').style.display='none');
-    });
-
-    window.addEventListener('click', e=>{
-      if(e.target.classList.contains('modal')) e.target.style.display='none';
-    });
-  </script>
+  // MODALES
+  function initModal(btnId, modalId, closeId){
+    const btn=document.getElementById(btnId);
+    const modal=document.getElementById(modalId);
+    const close=document.getElementById(closeId);
+    btn.addEventListener('click',()=>modal.style.display='block');
+    close.addEventListener('click',()=>modal.style.display='none');
+    window.addEventListener('click',e=>{ if(e.target===modal) modal.style.display='none'; });
+  }
+  initModal('discordBtn','discordModal','closeDiscord');
+  initModal('termsBtn','termsModal','closeTerms');
+</script>
 
 </body>
 </html>
